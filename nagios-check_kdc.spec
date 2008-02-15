@@ -1,6 +1,6 @@
 %define name	nagios-check_kdc
 %define version	20050715
-%define release	%mkrel 3
+%define release	%mkrel 4
 
 Name:		%{name}
 Version:	%{version}
@@ -28,10 +28,10 @@ install -d -m 755 %{buildroot}%{_libdir}/nagios/plugins
 install -m 755 %{SOURCE0} %{buildroot}%{_libdir}/nagios/plugins
 
 install -d -m 755 %{buildroot}%{_sysconfdir}/nagios/plugins.d
-cat > %{buildroot}%{_sysconfdir}/nagios/plugins.d/check_kdc.cfg <<EOF
+cat > %{buildroot}%{_sysconfdir}/nagios/plugins.d/check_kdc.cfg <<'EOF'
 define command{
 	command_name	check_kdc
-	command_line	%{_libdir}/nagios/plugins/check_kdc -H $HOSTADDRESS
+	command_line	%{_libdir}/nagios/plugins/check_kdc -H $HOSTADDRESS$
 }
 EOF
 
