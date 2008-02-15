@@ -1,6 +1,6 @@
 %define name	nagios-check_kdc
 %define version	20050715
-%define release	%mkrel 1
+%define release	%mkrel 2
 
 Name:		%{name}
 Version:	%{version}
@@ -10,7 +10,6 @@ Group:		Networking/Other
 License:	BSD
 URL:		http://www.loveshack.ukfsn.org/nagios/
 Source0:	http://www.loveshack.ukfsn.org/nagios/check_kdc
-BuildArch:  noarch
 BuildRoot:  %{_tmppath}/%{name}-%{version}
 
 %description
