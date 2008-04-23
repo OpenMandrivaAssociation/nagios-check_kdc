@@ -1,6 +1,6 @@
 %define name	nagios-check_kdc
 %define version	20050715
-%define release	%mkrel 4
+%define release	%mkrel 5
 
 Name:		%{name}
 Version:	%{version}
@@ -10,6 +10,7 @@ Group:		Networking/Other
 License:	BSD
 URL:		http://www.loveshack.ukfsn.org/nagios/
 Source0:	http://www.loveshack.ukfsn.org/nagios/check_kdc
+Patch:	    check_kdc-20050715-fix-kinit-path.patch
 BuildRoot:  %{_tmppath}/%{name}-%{version}
 
 %description
@@ -17,6 +18,9 @@ Check getting tickets from a kerberos KDC using a keytab. Doesn't require Perl
 Kerberos stuff (unlike check_krb5), just kinit/kdestroy.
 
 %prep
+%setup -T -c
+install -m 755 %{SOURCE0} check_kdc
+%patch -p 0
 
 %build
 
@@ -25,7 +29,7 @@ Kerberos stuff (unlike check_krb5), just kinit/kdestroy.
 rm -rf %{buildroot}
 
 install -d -m 755 %{buildroot}%{_libdir}/nagios/plugins
-install -m 755 %{SOURCE0} %{buildroot}%{_libdir}/nagios/plugins
+install -m 755 check_kdc %{buildroot}%{_libdir}/nagios/plugins
 
 install -d -m 755 %{buildroot}%{_sysconfdir}/nagios/plugins.d
 cat > %{buildroot}%{_sysconfdir}/nagios/plugins.d/check_kdc.cfg <<'EOF'
