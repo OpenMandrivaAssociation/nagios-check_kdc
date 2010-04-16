@@ -1,6 +1,6 @@
 %define name	nagios-check_kdc
 %define version	20050715
-%define release	%mkrel 8
+%define release	%mkrel 9
 
 Name:		%{name}
 Version:	%{version}
@@ -10,7 +10,6 @@ Group:		Networking/Other
 License:	BSD
 URL:		http://www.loveshack.ukfsn.org/nagios/
 Source0:	http://www.loveshack.ukfsn.org/nagios/check_kdc
-Patch:	    check_kdc-20050715-fix-kinit-path.patch
 BuildArch:  noarch
 BuildRoot:  %{_tmppath}/%{name}-%{version}
 
@@ -21,7 +20,8 @@ Kerberos stuff (unlike check_krb5), just kinit/kdestroy.
 %prep
 %setup -T -c
 install -m 755 %{SOURCE0} check_kdc
-%patch -p 0
+
+perl -pi -e 's|/usr/kerberos/bin|%{_bindir}|' check_kdc
 
 %build
 
