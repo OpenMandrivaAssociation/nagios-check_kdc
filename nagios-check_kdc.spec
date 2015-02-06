@@ -1,6 +1,6 @@
 %define name	nagios-check_kdc
 %define version	20050715
-%define release	%mkrel 10
+%define release	11
 
 Name:		%{name}
 Version:	%{version}
