@@ -8,7 +8,7 @@ Release:	%{release}
 Summary:	Nagios kdc plugin
 Group:		Networking/Other
 License:	BSD
-URL:		http://www.loveshack.ukfsn.org/nagios/
+URL:		https://www.loveshack.ukfsn.org/nagios/
 Source0:	http://www.loveshack.ukfsn.org/nagios/check_kdc
 BuildArch:  noarch
 BuildRoot:  %{_tmppath}/%{name}-%{version}
